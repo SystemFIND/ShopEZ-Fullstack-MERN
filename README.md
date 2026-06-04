@@ -116,6 +116,7 @@ npm run dev            # starts on http://localhost:8000
 # 3. Frontend (new terminal)
 cd frontend
 npm install
+cp .env.example .env
 npm start              # starts on http://localhost:3000
 ```
 
