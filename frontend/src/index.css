@@ -1,0 +1,184 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+    --font-heading: "Outfit", ui-sans-serif, system-ui, -apple-system, "Segoe UI",
+        sans-serif;
+    --font-body: "Manrope", ui-sans-serif, system-ui, -apple-system, "Segoe UI",
+        sans-serif;
+}
+
+html,
+body {
+    margin: 0;
+    background: #ffffff;
+    color: #0a0a0a;
+    font-family: var(--font-body);
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    text-rendering: optimizeLegibility;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    font-family: var(--font-heading);
+    letter-spacing: -0.01em;
+    color: #0a0a0a;
+}
+
+@layer base {
+    :root {
+        --background: 0 0% 100%;
+        --foreground: 0 0% 4%;
+        --card: 0 0% 100%;
+        --card-foreground: 0 0% 4%;
+        --popover: 0 0% 100%;
+        --popover-foreground: 0 0% 4%;
+        --primary: 0 0% 4%;
+        --primary-foreground: 0 0% 100%;
+        --secondary: 0 0% 96%;
+        --secondary-foreground: 0 0% 4%;
+        --muted: 0 0% 96%;
+        --muted-foreground: 0 0% 36%;
+        --accent: 0 0% 96%;
+        --accent-foreground: 0 0% 4%;
+        --destructive: 0 84% 60%;
+        --destructive-foreground: 0 0% 100%;
+        --border: 0 0% 90%;
+        --input: 0 0% 90%;
+        --ring: 0 0% 4%;
+        --radius: 0rem;
+    }
+}
+
+@layer base {
+    * {
+        @apply border-border;
+    }
+    body {
+        @apply bg-background text-foreground;
+    }
+}
+
+/* Enforce sharp edges per design guidelines */
+@layer components {
+    .ez-btn-primary {
+        @apply inline-flex items-center justify-center bg-black text-white px-6 py-3 text-sm font-medium tracking-wide transition-colors hover:bg-neutral-800 disabled:opacity-50 disabled:cursor-not-allowed;
+    }
+    .ez-btn-secondary {
+        @apply inline-flex items-center justify-center bg-transparent text-black border border-black px-6 py-3 text-sm font-medium tracking-wide transition-colors hover:bg-neutral-100;
+    }
+    .ez-btn-ghost {
+        @apply inline-flex items-center justify-center bg-transparent text-black px-4 py-2 text-sm font-medium transition-colors hover:bg-neutral-100;
+    }
+    .ez-input {
+        @apply w-full bg-white border border-neutral-300 px-4 py-3 text-sm placeholder:text-neutral-400 outline-none focus:border-black focus:ring-1 focus:ring-black transition-colors;
+    }
+    .ez-label {
+        @apply block text-xs uppercase tracking-[0.18em] font-semibold text-neutral-900 mb-2;
+    }
+    .ez-card {
+        @apply border border-neutral-200 p-6 bg-white hover:border-neutral-400 transition-colors;
+    }
+    .ez-overline {
+        @apply text-xs uppercase tracking-[0.22em] font-bold text-neutral-900;
+    }
+    .ez-divider {
+        @apply h-px w-full bg-neutral-200;
+    }
+    .ez-badge {
+        @apply inline-flex items-center px-2 py-1 text-[10px] uppercase tracking-wider font-bold bg-neutral-100 text-neutral-900;
+    }
+    .ez-container {
+        @apply max-w-7xl mx-auto px-4 sm:px-6 lg:px-8;
+    }
+}
+
+/* Hide number input spinners */
+input[type="number"]::-webkit-outer-spin-button,
+input[type="number"]::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+input[type="number"] {
+    -moz-appearance: textfield;
+}
+
+/* Subtle image hover */
+.ez-product-image {
+    transition: transform 600ms ease-out;
+}
+.ez-product-card:hover .ez-product-image {
+    transform: scale(1.04);
+}
+
+/* Skeleton shimmer */
+.ez-skel {
+    background: linear-gradient(
+        90deg,
+        #f5f5f5 0%,
+        #ececec 50%,
+        #f5f5f5 100%
+    );
+    background-size: 200% 100%;
+    animation: ezSkel 1.4s ease-in-out infinite;
+}
+@keyframes ezSkel {
+    0% {
+        background-position: 200% 0;
+    }
+    100% {
+        background-position: -200% 0;
+    }
+}
+
+/* Fade in */
+.ez-fade-in {
+    animation: ezFadeIn 480ms ease-out both;
+}
+@keyframes ezFadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(8px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@layer base {
+    [data-debug-wrapper="true"] {
+        display: contents !important;
+    }
+    [data-debug-wrapper="true"] > * {
+        margin-left: inherit;
+        margin-right: inherit;
+        margin-top: inherit;
+        margin-bottom: inherit;
+        padding-left: inherit;
+        padding-right: inherit;
+        padding-top: inherit;
+        padding-bottom: inherit;
+        column-gap: inherit;
+        row-gap: inherit;
+        gap: inherit;
+        border-left-width: inherit;
+        border-right-width: inherit;
+        border-top-width: inherit;
+        border-bottom-width: inherit;
+        border-left-style: inherit;
+        border-right-style: inherit;
+        border-top-style: inherit;
+        border-bottom-style: inherit;
+        border-left-color: inherit;
+        border-right-color: inherit;
+        border-top-color: inherit;
+        border-bottom-color: inherit;
+    }
+}
